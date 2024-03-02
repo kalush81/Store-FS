@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const PageWrapper = ({ children }) => (
   <div>
-    <p>Page wrapper componente</p>
+    <p>Page wrapper component</p>
     {children}
   </div>
 );
@@ -13,3 +13,5 @@ PageWrapper.propTypes = {
     PropTypes.node,
   ]),
 };
+
+export default PageWrapper;

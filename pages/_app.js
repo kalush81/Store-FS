@@ -1,8 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
+import PageWrapper from '../components/PageWrapper';
 
 export default function MyApp({ Component, pageProps }) {
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+    <PageWrapper>
+      <Component {...pageProps} />;
+    </PageWrapper>
+  );
 }
 
 MyApp.propTypes = {
