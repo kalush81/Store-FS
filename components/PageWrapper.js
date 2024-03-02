@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import Header from './styles/Header';
 
 const PageWrapper = ({ children }) => (
   <div>
-    <p>Page wrapper component</p>
+    <Header />
     {children}
   </div>
 );
