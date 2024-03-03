@@ -1,6 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
+import nProgress from 'nprogress';
+import Router from 'next/router';
 import PageWrapper from '../components/PageWrapper';
+
+import 'nprogress/nprogress.css';
+
+Router.events.on('routeChangeStart', () => nProgress.start());
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -11,6 +17,6 @@ export default function MyApp({ Component, pageProps }) {
 }
 
 MyApp.propTypes = {
-  Component: PropTypes.node,
+  Component: PropTypes.elementType,
   pageProps: PropTypes.any,
 };
