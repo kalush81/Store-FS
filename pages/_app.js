@@ -7,11 +7,13 @@ import PageWrapper from '../components/PageWrapper';
 import 'nprogress/nprogress.css';
 
 Router.events.on('routeChangeStart', () => nProgress.start());
+Router.events.on('routeChangeEnd', () => nProgress.done());
+Router.events.on('routeChangeError', () => nProgress.done());
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <PageWrapper>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </PageWrapper>
   );
 }
