@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import PropTypes from 'prop-types';
+import PropTypes, { any } from 'prop-types';
 import nProgress from 'nprogress';
 import Router from 'next/router';
+import { ApolloProvider } from '@apollo/client';
 import PageWrapper from '../components/PageWrapper';
+import withData from '../lib/withData';
 
 import 'nprogress/nprogress.css';
 
@@ -10,15 +12,20 @@ Router.events.on('routeChangeStart', () => nProgress.start());
 Router.events.on('routeChangeEnd', () => nProgress.done());
 Router.events.on('routeChangeError', () => nProgress.done());
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apollo }) {
   return (
-    <PageWrapper>
-      <Component {...pageProps} />
-    </PageWrapper>
+    <ApolloProvider client={apollo}>
+      <PageWrapper>
+        <Component {...pageProps} />
+      </PageWrapper>
+    </ApolloProvider>
   );
 }
 
 MyApp.propTypes = {
   Component: PropTypes.elementType,
   pageProps: PropTypes.any,
+  apollo: any,
 };
+
+export default withData(MyApp);
